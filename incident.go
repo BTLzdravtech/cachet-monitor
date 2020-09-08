@@ -26,13 +26,15 @@ func (incident *Incident) Send(cfg *CachetMonitor) error {
 	switch incident.Status {
 	case 1, 2, 3:
 		// partial outage
-		incident.ComponentStatus = 3
+		// incident.ComponentStatus = 3
 
-		componentStatus, err := incident.GetComponentStatus(cfg)
-		if componentStatus == 3 {
-			// major outage
-			incident.ComponentStatus = 4
-		}
+		// componentStatus, err := incident.GetComponentStatus(cfg)
+		// if componentStatus == 3 {
+		// 	// major outage
+		// 	incident.ComponentStatus = 4
+		// }
+
+		incident.ComponentStatus = 4
 
 		if err != nil {
 			logrus.Warnf("cannot fetch component: %v", err)
